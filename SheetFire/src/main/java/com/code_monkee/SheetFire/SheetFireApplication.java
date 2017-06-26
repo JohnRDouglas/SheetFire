@@ -5,18 +5,28 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import com.code_monkee.psolib.PsoContext;
 
 @SpringBootApplication
 public class SheetFireApplication {
-
 	
 	private static final Logger log = LoggerFactory.getLogger(SheetFireApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(SheetFireApplication.class);
+		ApplicationContext ctx = SpringApplication.run(SheetFireApplication.class, args);
+		PsoContext psoCtx = ctx.getBean(PsoContext.class);
+		//SpringApplication.run(SheetFireApplication.class);
+		
 	}
 
+	@Bean
+	PsoContext psoCtx() {
+		return new PsoContext();
+	}
+	
 	@Bean
 	public CommandLineRunner demo(CustomerRepository repository) {
 		return (args) -> {
