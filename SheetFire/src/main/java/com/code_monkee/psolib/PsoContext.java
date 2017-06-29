@@ -13,39 +13,45 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PsoContext {
-	private Random random = new Random();
-	double[] runWeights = new double[]{.7,1.4,1.4};
-	
 	List<PsoSwarm> swarms = new ArrayList<PsoSwarm>();
+
+	public PsoContext() {
+
+	}
+
+	public void flySwarms() {
+		for(int i=0; i < swarms.size(); i++) {
+			PsoSwarm s = swarms.get(i);
+			s.fly();
+		}
+	}
 	
 	public PsoSwarm makeSwarm(SwarmAttributes attributes) {
 		PsoSwarm s = new PsoSwarm(attributes);
-		s.setPsoContext(this);
 		this.addSwarm(s);
 		return new PsoSwarm(attributes);
 	}
-	
+
+	// Preferred method for adding a Swarm
 	public void addSwarm(PsoSwarm s) {
-		
-		this.swarms.add(s);
 		s.setPsoContext(this);
+		this.swarms.add(s);
 	}
+
 	public List<PsoSwarm> getSwarms() {
 		return swarms;
 	}
-	
-	public void setSwarms(List<PsoSwarm> swarms) {
-		this.swarms = swarms;
-	}
 
-	public double[] getWeights() {
-		// TODO Auto-generated method stub
-		return this.runWeights;
+	public void setSwarms(List<PsoSwarm> swarms) {
+		this.swarms = new ArrayList<PsoSwarm>();
+		for(PsoSwarm s : swarms) {
+			this.addSwarm(s);
+		}
 	}
 
 	public void setSwarm(PsoSwarm psoSwarm) {
 		this.swarms = new ArrayList<PsoSwarm>();
 		this.swarms.add(psoSwarm);
 	}
-	
+
 }

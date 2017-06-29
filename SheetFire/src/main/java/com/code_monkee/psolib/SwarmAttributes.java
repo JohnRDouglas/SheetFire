@@ -7,6 +7,8 @@ public class SwarmAttributes {
 	private double[] upperBounds;
 	private double[] lowerBounds;
 	
+	private static final double[] runWeights = new double[]{0.7,1.54,1.54};
+	
 	public SwarmAttributes(int swarmCount, int particleCount, int particleLength,
 			double[] upperBounds, double[] lowerBounds) {
 		this.swarmCount = swarmCount;
@@ -14,7 +16,7 @@ public class SwarmAttributes {
 		this.particleLength = particleLength;
 		this.upperBounds = upperBounds;
 		this.lowerBounds = lowerBounds;
-		
+
 	}
 	
 	public SwarmAttributes() {
@@ -74,5 +76,9 @@ public class SwarmAttributes {
 		return true;
 
 	
+	}
+
+	public static double[] getRunWeights() {
+		return runWeights;
 	}
 }
