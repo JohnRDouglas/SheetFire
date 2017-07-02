@@ -123,9 +123,9 @@ public class PsoSwarm {
 		sb.append("{");
 		for(int i=0; i < particles.size(); i++) {
 			PsoParticle p = particles.get(i);
-			sb.append("P " + i + p.toString());
-			if(i < particles.size()) {
-				sb.append(", ");
+			sb.append(String.format("%03d", i) + ": " + p.toString());
+			if(i < particles.size() - 1) {
+				sb.append("; ");
 			}
 		}
 		sb.append("}");

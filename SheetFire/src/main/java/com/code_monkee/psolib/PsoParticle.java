@@ -141,22 +141,24 @@ public class PsoParticle {
 		StringBuilder sb = new StringBuilder();
 		StringBuilder sb2 = new StringBuilder();
 		sb.append("[");
-		// Current Values
+
 		for(int i=0; i< values.length; i++) {
 			Double v = values[i];
-			sb.append(v.toString());
+			sb.append(String.format("%-5.4f", v));
 			Double v2 = pBestValues[i];
-			sb2.append(v2.toString());
-			
-			if(i < values.length) {
+			sb2.append(String.format("%-5.4f", v2));
+			if(i < values.length -1) {
 				sb.append(", ");
 				sb2.append(", ");
 			}
 		}
 		sb.append("|");
 		sb.append(sb2.toString());
-		sb.append("|" + ((Double)score).toString() );
-		sb.append("|" + ((Double)pBestScore).toString() ); 
+		
+		//sb.append("|" + ((Double)score).toString() );
+		//sb.append("|" + ((Double)pBestScore).toString() );
+		sb.append("|" + String.format("%-5.4e", score));
+		sb.append("|" + String.format("%-5.4e", pBestScore));
 		sb.append("]");
 		return sb.toString();
 	}
