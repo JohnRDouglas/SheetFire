@@ -1,16 +1,28 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Getting Started: Serving Web Content</title>
+<title>Display Swarm Info</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Result</h1>
-	<div th:if="${particles != null}"></div>
-	<ul>
-    <th:block th:object="${particles}">
-       <li th:each="pStr : ${particles}" th:text="${pStr}">Item description here...</li>
-    </th:block>
-    </ul>
+	<div th:if="${particles != null}">
+		<ul>
+			<th:block th:object="${particles}">
+				<li th:each="pStr : ${particles}" th:text="${pStr}">Item
+					description here...</li>
+			</th:block>
+		</ul>
+	</div>
+	<div th:if="${swarm != null}">
+		<h2>Particle Details</h2>
+		<p th:text="${swarm}" />
+		<ul>
+			<th:block th:object="${swarm}">
+				<li th:each="particle : ${swarm.particles}"
+					th:text="${particle}">asdf</li>
+			</th:block>
+		</ul>
+	</div>
 </body>
 </html>

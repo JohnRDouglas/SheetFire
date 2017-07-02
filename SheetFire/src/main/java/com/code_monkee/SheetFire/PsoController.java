@@ -53,7 +53,7 @@ public class PsoController {
 		}
 		
 		model.addAttribute("particles", particlesStrings);
-		
+		model.addAttribute("swarm", swarm);
 		return "SwarmTemplate";
 	}
 	
