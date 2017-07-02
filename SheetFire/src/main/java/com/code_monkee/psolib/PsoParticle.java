@@ -1,5 +1,6 @@
 package com.code_monkee.psolib;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -134,5 +135,29 @@ public class PsoParticle {
 	public void setgBestScore(double gBestScore) {
 		// TODO Auto-generated method stub
 		this.gBestScore = gBestScore;
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		StringBuilder sb2 = new StringBuilder();
+		sb.append("[");
+		// Current Values
+		for(int i=0; i< values.length; i++) {
+			Double v = values[i];
+			sb.append(v.toString());
+			Double v2 = pBestValues[i];
+			sb2.append(v2.toString());
+			
+			if(i < values.length) {
+				sb.append(", ");
+				sb2.append(", ");
+			}
+		}
+		sb.append("|");
+		sb.append(sb2.toString());
+		sb.append("|" + ((Double)score).toString() );
+		sb.append("|" + ((Double)pBestScore).toString() ); 
+		sb.append("]");
+		return sb.toString();
 	}
 }

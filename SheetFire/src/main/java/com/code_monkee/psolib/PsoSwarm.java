@@ -1,5 +1,7 @@
 package com.code_monkee.psolib;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -115,5 +117,18 @@ public class PsoSwarm {
 	public void setBestValues(double[] values) {
 		gBestValues = values;
 	}
-	
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{");
+		for(int i=0; i < particles.size(); i++) {
+			PsoParticle p = particles.get(i);
+			sb.append("P " + i + p.toString());
+			if(i < particles.size()) {
+				sb.append(", ");
+			}
+		}
+		sb.append("}");
+		return sb.toString();
+	}
 }
